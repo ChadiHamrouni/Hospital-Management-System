@@ -10,6 +10,14 @@ https://www.youtube.com/watch?v=HzFatL3WT6g&t=175s
 --> This video will help
 https://youtu.be/VRwhNKoxUtk
 
+The following need to be added to the Project Properties in:
+Project Properties (All Configurations) --> Linker --> Input --> Additional Dependencies
+* glfw3.lib
+* opengl32.lib
+* user32.lib
+* gdi32.lib
+* shell32.lib
+
 # Design Patterns
 For the sake of simplicity this design pattern is implemented in fully in the *Main.cpp* file.
 
