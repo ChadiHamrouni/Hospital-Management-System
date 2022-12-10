@@ -5,7 +5,7 @@ This C++ application is a simple implementation of a Hospital Management System.
 - GLFW Library
 - ImGui Library (C++ GUI)
 
-#Design Patterns
+# Design Patterns
 For the sake of simplicity this design pattern is implemented in fully in the *Main.cpp* file.
 
 ![Class Diagram with Patterns drawio](https://user-images.githubusercontent.com/69485266/206863499-85a72b3d-5c2c-4210-9389-8f6008cf6c1e.png)
