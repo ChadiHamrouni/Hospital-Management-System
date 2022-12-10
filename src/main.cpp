@@ -10,6 +10,7 @@
 #include "../header/person.h"
 int main()
 {
+	//Initialize Tab selection
 	int Tab = 0;
 	// Initialize GLFW
 	glfwInit();
