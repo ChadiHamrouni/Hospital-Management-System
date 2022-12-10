@@ -7,7 +7,7 @@
 namespace myApp {
 	
 	void Patients(Patient p);
-	void Doctors(Doctor d);
+	//void Doctors(Doctor d);
 	void Departments(Department depart);
 	void Archives(Person per);
 }

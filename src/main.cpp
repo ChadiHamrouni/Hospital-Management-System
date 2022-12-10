@@ -8,6 +8,61 @@
 #include "../header/patient.h"
 #include "../header/department.h"
 #include "../header/person.h"
+
+class Salary {
+public:
+	virtual ~Salary() {}
+	virtual float getSalary() const = 0;
+};
+
+class OnCallSalary : public Salary
+{
+public:
+	float getSalary() const override {
+		return 300;
+	}
+};
+
+class RegularSalary : public Salary
+{
+public:
+	float getSalary() const override {
+		return 8000;
+	}
+};
+
+class Doctor {
+public:
+	virtual ~Doctor() {};
+	virtual Salary* FactoryMethod() const = 0;
+
+	float someOperation() const {
+		Salary* salary = this->FactoryMethod();
+		float result = salary->getSalary();
+		delete salary;
+		return result;
+	}
+};
+
+class DoctorOnCall : public Doctor {
+public:
+	Salary* FactoryMethod() const override {
+		return new OnCallSalary();
+	}
+};
+
+class RegularDoctor : public Doctor {
+public:
+	Salary* FactoryMethod() const override {
+		return new RegularSalary();
+	}
+};
+
+void viewSalary(const Doctor& doctor) {
+	std::cout << "This Docter's salary.\n"
+		<< doctor.someOperation() << std::endl;
+}
+
 int main()
 {
 	//Initialize Tab selection
@@ -53,11 +108,19 @@ int main()
 	Patient p1("PT516-151", "John Sbou3i", "+216 22 225 849");
 	Patient p2("PT396-213", "Ameni Labyedh ", "+216 59 259 745");
 	// Doctor Dummy Data
-	Doctor doc1("DR159-155", "Slimen Labyedh", "59 256 379", "Heart Surgery", "Vacation", "Austin, Texas 194 Block", "10 years");
-	Doctor doc2("DR256-046", "Mariem Bouchoucha", "64 456 572", "Neurology", "Working", "Houston, 254 Block B", "25 years");
+	//Doctor doc1("DR159-155", "Slimen Labyedh", "59 256 379", "Heart Surgery", "Vacation", "Austin, Texas 194 Block", "10 years");
+	//Doctor doc2("DR256-046", "Mariem Bouchoucha", "64 456 572", "Neurology", "Working", "Houston, 254 Block B", "25 years");
 	// Department Dummy Data
 	Department d1("Surgery", "56%", "9 Rooms");
 	Department d2("Neurology", "20%", "3 Rooms");
+	
+
+	//Factory Method:
+	Doctor* reg = new RegularDoctor();
+	Doctor* oncall = new DoctorOnCall();
+
+	viewSalary(*reg);
+	viewSalary(*oncall);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -195,8 +258,8 @@ int main()
 								ImGui::Separator();
 								ImGui::Text("QUALIFICATION");
 								ImGui::Separator();
-								myApp::Doctors(doc1);
-								myApp::Doctors(doc2);
+								//myApp::Doctors(doc1);
+								//myApp::Doctors(doc2);
 						}ImGui::EndTable();						
 					}
 					else if (Tab == 4) {

@@ -25,7 +25,7 @@ namespace myApp {
 		ImGui::Text(p.phoneNumber.c_str());
 		ImGui::Separator();
 	}
-	void Doctors(Doctor doc) {
+	/*void Doctors(Doctor doc) {
 		ImGui::TableNextRow();
 		ImGui::Separator();
 		ImGui::TableNextColumn();
@@ -56,7 +56,7 @@ namespace myApp {
 		ImGui::Separator();
 		ImGui::Text(doc.qualification.c_str());
 		ImGui::Separator();
-	}
+	}*/
 	void Departments(Department depart) {
 		ImGui::TableNextRow();
 		ImGui::Separator();
