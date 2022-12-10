@@ -3,10 +3,12 @@ This C++ application is a simple implementation of a Hospital Management System.
 
 # Dependencies
 - GLFW Library
-This video will help
+--> This video will help
 https://www.youtube.com/watch?v=HzFatL3WT6g&t=175s
 
 - ImGui Library (C++ GUI)
+--> This video will help
+https://youtu.be/VRwhNKoxUtk
 
 # Design Patterns
 For the sake of simplicity this design pattern is implemented in fully in the *Main.cpp* file.
