@@ -22,3 +22,5 @@ In the obove Implimentation we gave the regular doctor a salary of 8000 and the 
 
 # Output
 ![Screenshot_3](https://user-images.githubusercontent.com/69485266/206864155-b26f1ef8-e7b5-448e-8cbf-28da5dd21bbf.png)
+
+As show the salary displayed is the salary of the regular doctor and it's followed by the on calls.
