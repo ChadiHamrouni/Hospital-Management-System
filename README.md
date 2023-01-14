@@ -20,5 +20,7 @@ Project Properties (All Configurations) --> Linker --> Input --> Additional Depe
 * gdi32.lib
 * shell32.lib
 
+# Demo
+![Hospital Management System Demo](https://user-images.githubusercontent.com/69485266/212501707-0516175b-9578-46a3-b551-4e61bb2ab299.gif)
 
 
