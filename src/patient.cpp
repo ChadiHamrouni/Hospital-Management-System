@@ -1,143 +1,106 @@
-#include <string>
 #include <iostream>
+#include "imgui.h"
+
 #include "../header/patient.h"
-//#include <fstream>
-#include <string.h>
-//std::fstream myFile;
+#include "../header/doctor.h"
 
-    Patient::Patient(std::string Id, std::string FullName, std::string PhoneNumber) {
-        id = Id;
-        fullName = FullName;
-        phoneNumber = PhoneNumber;
-    }
+Patient::Patient(std::string PersonId, std::string FullName, std::string PhoneNumber,
+    int EntryNumber,
+    int Age,
+    std::string Sex,
+    std::string Address,
+    std::string City,
+    std::string EntryDate,
+    std::string DoctorRefferedTo,
+    std::string Diagnosis,
+    std::string Department) : Person(PersonId, FullName, PhoneNumber){
 
-/*    Patient::Patient(std::string PersonId, std::string FullName, std::string PhoneNumber, int Age, char Sex, std::string Address, std::string City, std::string EntryDate, int EntryNumber, std::string DoctorRefferedTo, std::string Diagnosis, std::string Department)
-        : Person(PersonId, FullName, PhoneNumber)
-    {
-        age = Age;
-        sex = Sex;
-        address = Address;
-        city = City;
-        entrydate = EntryDate;
-        entryNumber = EntryNumber;
-        doctorRefferedTO = DoctorRefferedTo;
-        diagnosis = Diagnosis;
-        department = Department;
-    }*/
+    age = Age;
+    sex = Sex;
+    address = Address;
+    city = City;
+    entrydate = EntryDate;
+    entryNumber = EntryNumber;
+    doctorRefferedTO = DoctorRefferedTo;
+    diagnosis = Diagnosis;
+    department = Department;
+}
 
-/*bool searchPatient(std::string ID)
-{  
-myFile.open("../data/Patient.txt", std::ios::in);
-    if (myFile.is_open())
-         {
-             std::string line;
-             while (getline(myFile, line))
-             {
-                 int res = line.compare(ID);
-                 if (res == 0)
-                     return true; // equal
-                 return false;
-             }
-             myFile.close();
-             std::cout << "test if code reaches here";
-         }
-}*/
-     
-/*void registerPatient(Patient p)
-{
-    myFile.open("../data/Patient.txt", std::ios::app);
-         if (myFile.is_open())
-         {
-             if (searchPatient(p.personId) == false)
-             {
-                 myFile << personId << "\n"
-                        << fullName << "\n"
-                        << phoneNumber << "\n"
-                        << age << "\n"
-                        << sex << "\n"
-                        << address << "\n"
-                        << city << "\n"
-                        << entrydate << "\n"
-                        << entryNumber << "\n"
-                        << doctorRefferedTO << "\n"
-                        << diagnosis << "\n"
-                        << department << "\n"
-                        << endl;
-                 myFile.close();
-             }
-             else
-             {
-                 std::cout << "This patient has already been added!" << endl;
-             }
-         }
-}*/
+void Patient::getPatientDetails(Patient p){   
+    std::cout << "ID: " << p.personId << std::endl;
+    std::cout << "Full Name: " << p.fullName << std::endl;
+    std::cout << "Phone Number: " << p.phoneNumber << std::endl;
+    std::cout << "Entry Number: " << p.entryNumber << std::endl;
+    std::cout << "Age: " << p.age << std::endl;
+    std::cout << "Sex: " << p.sex << std::endl;
+    std::cout << "Address: " << p.address << std::endl;
+    std::cout << "City: " << p.city << std::endl;
+    std::cout << "Entry Date: " << p.entrydate << std::endl;
+    std::cout << "Doctor reffered to: " << p.doctorRefferedTO << std::endl;
+    std::cout << "Diagnosis: " << p.diagnosis << std::endl;
+    std::cout << "Department: " << p.department << std::endl;
+}
 
-/*void Patient::getPatientDetails()
-    {
-        std::cout << "Full Name: " << fullName << endl;
-        std::cout << "Phone Number: " << phoneNumber << endl;
-        std::cout << "Age: " << age << endl;
-        std::cout << "Sex: " << sex << endl;
-        std::cout << "Address: " << address << endl;
-        std::cout << "City: " << city << endl;
-        std::cout << "Entry Date: " << entrydate << endl;
-        std::cout << "Entry Number: " << entryNumber << endl;
-        std::cout << "Doctor reffered to: " << doctorRefferedTO << endl;
-        std::cout << "Diagnosis: " << diagnosis << endl;
-        std::cout << "Department: " << department << endl;
-}*/
+void Patient::patientHeader() {
+    ImGui::TableNextRow();
+    ImGui::TableNextColumn();
+    ImGui::Text("ID");
+    ImGui::TableNextColumn();
+    ImGui::Text("FULL NAME");
+    ImGui::TableNextColumn();
+    ImGui::Text("PHONE NUMBER");
+    ImGui::TableNextColumn();
+    ImGui::Text("ENTRY NUMBER");
+    ImGui::TableNextColumn();
+    ImGui::Text("AGE");
+    ImGui::TableNextColumn();
+    ImGui::Text("SEX");
+    ImGui::TableNextColumn();
+    ImGui::Text("ADDRESS");
+    ImGui::TableNextColumn();
+    ImGui::Text("CITY");
+    ImGui::TableNextColumn();
+    ImGui::Text("ENTRY DATE");
+    ImGui::TableNextColumn();
+    ImGui::Text("REFFERED TO");
+    ImGui::TableNextColumn();
+    ImGui::Text("DIAGNOSIS");
+    ImGui::TableNextColumn();
+    ImGui::Text("DEPARTMENT");
+}
 
-class AdmittedPatient : public Patient
-{
-private:
-        std::string initialCondition;
-        std::string roomNumber;
-};
+void Patient::patientList(Patient p){
+    ImGui::TableNextRow();
+    ImGui::TableNextColumn();
+    ImGui::Text(p.personId.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.fullName.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.phoneNumber.c_str());
+    ImGui::TableNextColumn();
+    std::string entryN = std::to_string(p.entryNumber);
+    ImGui::Text(entryN.c_str());
+    ImGui::TableNextColumn();
+    std::string age = std::to_string(p.age);
+    ImGui::Text(age.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.sex.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.address.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.city.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.entrydate.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.doctorRefferedTO.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.diagnosis.c_str());
+    ImGui::TableNextColumn();
+    ImGui::Text(p.department.c_str());
+}
 
-class RegularPatient : public Patient
-{
-private:
-        std::string medicineRecommended;
-        // date dateOfVisit;
-        std::string statusOfTreatment;
-};
 
-class DischargedPatient : public Patient
-{
-private:
-        // date dateOfDischarge;
-        std::string treatmentAdvice;
-        std::string treatmentGiven;
-        std::string paymentDue;
-};
 
-class PatientCheckUp
-{
-private:
-        Patient patient;
-        //  Doctor doctor;
-        std::string status;
-        // date dateOfCheckup;
-        std::string diagnosis;
-        std::string treatment;
-};
 
-class PatientOperation
-{
-private:
-        Patient patient;
-        // Doctor doctor;
-        //   date operationDate;
-        std::string operationType;
-        std::string patientConditionPre;
-        std::string patientConditionPost;
-        std::string treatmentAdvice;
-        std::string operationTheater;
-};
 
-class Card
-{
-private:
-        std::string cardId;
-};
 
