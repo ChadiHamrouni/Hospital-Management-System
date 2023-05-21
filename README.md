@@ -1,7 +1,7 @@
 # Hospital-Management-System
 
 # Description
-This C++ / DearImGui application is a simple implementation of a Hospital Management System.
+This project consists of a static UI of a hospital management system using C++ / DearImGui and ImPlot.
 
 # Dependencies
 - GLFW Library
