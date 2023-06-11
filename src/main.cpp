@@ -253,9 +253,7 @@ int main() {
 						ImPlot::EndPlot();
 					}
 					ImPlot::DestroyContext();
-
-					ad.dashBoardStats(dash);
-														
+					ad.dashBoardStats(dash);														
 				}
 				else if (Tab == 2){
 					ImGui::SetCursorPos(ImVec2(250, 38));
@@ -436,4 +434,3 @@ int main() {
 		glfwTerminate();
 		return 0;
 }
-
